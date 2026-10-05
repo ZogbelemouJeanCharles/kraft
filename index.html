@@ -58,7 +58,7 @@ a{color:inherit}
 .pitch-shard strong{color:var(--sun)}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .btn{font-family:var(--f-marker);font-size:1.2rem;border:0;cursor:pointer;padding:14px 26px;background:var(--sun);color:var(--ink-dark);text-decoration:none;box-shadow:6px 6px 0 var(--ink);transform:rotate(-1.5deg);transition:transform .15s,box-shadow .15s;display:inline-block}
-.btn:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+@media (hover:hover){.btn:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:none;text-decoration:underline wavy var(--sun) 2px;text-underline-offset:6px}
 .star{position:absolute;width:56px;height:56px;pointer-events:none}
 .star svg{width:100%;height:100%;overflow:visible}
@@ -109,7 +109,7 @@ a{color:inherit}
 .stamp-btn{width:64px;height:64px;border:3px solid var(--ink);background:var(--paper);cursor:pointer;display:grid;place-items:center;padding:6px;transition:transform .12s, background .12s}
 .stamp-btn svg{width:100%;height:100%}
 .stamp-btn[aria-pressed="true"]{background:var(--sun);transform:rotate(-4deg)}
-.stamp-btn:hover{transform:rotate(3deg)}
+@media (hover:hover){.stamp-btn:hover{transform:rotate(3deg)}}
 .ink-btn{width:38px;height:38px;border-radius:50%;border:3px solid var(--paper);outline:3px solid var(--lilac-deep);cursor:pointer}
 .ink-btn[aria-pressed="true"]{outline-color:var(--ink-dark)}
 .tool-label{font-family:var(--f-marker);color:var(--ink);font-size:1rem}
@@ -132,11 +132,49 @@ footer{background:var(--ink-dark);color:var(--lilac);padding-block:30px;font-siz
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer strong{color:#fff}
 
+/* ---------- tablet ---------- */
+@media (max-width:960px){
+  .stamp-wrap{grid-template-columns:minmax(0,1fr)}
+  .tools{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px 16px}
+  .clear{grid-column:1 / -1}
+  .steps{gap:24px}
+}
+
+/* ---------- phone ---------- */
 @media (max-width:820px){
-  .hero-pitch,.stamp-wrap{grid-template-columns:minmax(0,1fr)}
-  .label-grid,.steps,.menu{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-block:22px 28px}
+  .hero::before{inset:0;clip-path:polygon(0 0,100% 0,100% 94%,70% 100%,30% 96%,0 100%)}
+  .hero-pitch{grid-template-columns:minmax(0,1fr);gap:26px;margin-top:26px}
+  .pitch-shard{padding:26px 22px 28px;font-size:1.05rem;clip-path:polygon(0 3%,98% 0,100% 90%,92% 100%,3% 97%)}
+  .deco-hero-star,.deco-hero-swirl,.deco-stamp-swirl{display:none}
+  .deco-menu-star{left:auto!important;right:16px;top:-26px!important}
+  .deco-stamp-star{top:2px!important}
+  .labels{padding-block:40px 48px}
+  .label-grid{grid-template-columns:minmax(0,1fr);gap:34px}
   .label:nth-child(2){margin-top:0}
-  .tools{flex-direction:row;flex-wrap:wrap;align-items:center}
+  .deco-labels-star{top:12px!important;left:auto!important;right:14px;width:48px;height:48px}
+  .sec{padding-block:48px}
+  .sec-head{margin-bottom:24px}
+  .menu{grid-template-columns:minmax(0,1fr);gap:28px}
+  .item{padding:22px 20px 20px;filter:drop-shadow(5px 6px 0 var(--shadow))}
+  .item h3{font-size:1.3rem}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .step{padding-top:0;padding-left:70px;min-height:54px}
+  #paper{aspect-ratio:4/3}
+  .paper-board{padding:12px}
+  .stamp-btn{width:58px;height:58px}
+  .ink-btn{width:44px;height:44px}
+  footer .wrap{flex-direction:column}
+}
+
+/* ---------- small phone ---------- */
+@media (max-width:420px){
+  body{font-size:1rem}
+  .cta-row{flex-direction:column;align-items:stretch;text-align:center}
+  .btn{transform:none}
+  .item-top{flex-direction:column;gap:2px}
+  .tools{grid-template-columns:minmax(0,1fr)}
+  .stamp-btn{width:54px;height:54px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -173,7 +211,7 @@ footer strong{color:#fff}
 </svg>
 
 <header class="hero">
-  <span class="swirl" style="right:22%;top:300px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-swirl"/></svg></span>
+  <span class="swirl deco-hero-swirl" style="right:22%;top:300px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-swirl"/></svg></span>
   <svg class="dots" style="top:150px" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 C 200 20, 260 40, 380 60 S 700 110, 1000 90"/></svg>
   <div class="wrap">
     <p class="crew">Marit, Fien, Soniya, Jean-Charles, Elif, Kiara</p>
@@ -190,11 +228,11 @@ footer strong{color:#fff}
       </div>
     </div>
   </div>
-  <span class="star wobble" style="right:6%;top:330px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
+  <span class="star wobble deco-hero-star" style="right:6%;top:330px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
 </header>
 
 <section class="labels" aria-label="Waarom KRAFT">
-  <span class="star lg" style="left:4%;top:150px;transform:rotate(-12deg)" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
+  <span class="star lg deco-labels-star" style="left:4%;top:150px;transform:rotate(-12deg)" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
   <div class="wrap label-grid">
     <div class="label">
       <h3>Probleem</h3>
@@ -215,7 +253,7 @@ footer strong{color:#fff}
 </section>
 
 <section class="sec menu-bg" id="workshops">
-  <span class="star wobble" style="left:3%;top:-24px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
+  <span class="star wobble deco-menu-star" style="left:3%;top:-24px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -251,8 +289,8 @@ footer strong{color:#fff}
 </section>
 
 <section class="sec" id="stempel">
-  <span class="star sm wobble" style="right:5%;top:40px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
-  <span class="swirl" style="right:11%;top:70px;transform:scale(-0.8,0.8)" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-swirl"/></svg></span>
+  <span class="star sm wobble deco-stamp-star" style="right:5%;top:40px" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span>
+  <span class="swirl deco-stamp-swirl" style="right:11%;top:70px;transform:scale(-0.8,0.8)" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-swirl"/></svg></span>
   <svg class="dots" style="top:10px" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 C 180 40, 420 20, 600 50 S 880 90, 1000 30"/></svg>
   <div class="wrap">
     <div class="sec-head">
@@ -324,8 +362,11 @@ footer strong{color:#fff}
 
   function size(){
     const r = cv.getBoundingClientRect(), d = window.devicePixelRatio || 1;
-    const snap = count ? cv.toDataURL() : null;
-    cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d);
+    const w = Math.round(r.width * d), h = Math.round(r.height * d);
+    // phones fire resize when the address bar slides; only redraw when the paper really changed size
+    if (w === cv.width && h === cv.height) return;
+    const snap = cv.width > 0 ? cv.toDataURL() : null;
+    cv.width = w; cv.height = h;
     ctx.setTransform(d,0,0,d,0,0);
     if (snap){ const img = new Image(); img.onload = () => ctx.drawImage(img,0,0,r.width,r.height); img.src = snap; }
   }
@@ -363,7 +404,8 @@ footer strong{color:#fff}
   };
 
   function press(x, y){
-    const s = 34 + Math.random()*22;
+    const fit = Math.min(1, Math.max(0.6, cv.getBoundingClientRect().width / 700));
+    const s = (34 + Math.random()*22) * fit;
     const off = document.createElement('canvas'), d = window.devicePixelRatio || 1, px = Math.ceil(s*2.6*d);
     off.width = off.height = px;
     const o = off.getContext('2d');
@@ -391,8 +433,8 @@ footer strong{color:#fff}
     const keep = [stamp, ink];
     plan.forEach(([s,i,fx,fy]) => { stamp = s; ink = i; press(fx*r.width, fy*r.height); });
     [stamp, ink] = keep;
-    count = 0; counter.textContent = 'Een paar voorbeeldafdrukken staan al klaar. Jouw beurt!';
-    hint.style.opacity = 0.55;
+    count = 0; counter.textContent = 'Een paar voorbeeldafdrukken staan al klaar. Tik op het papier, jouw beurt!';
+    hint.style.opacity = 0;
   }
 
   cv.addEventListener('pointerdown', e => {
