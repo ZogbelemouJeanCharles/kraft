@@ -122,8 +122,12 @@ a{color:inherit}
 /* ---------- steps ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;counter-reset:s}
 .step{position:relative;padding-top:64px}
-.step::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;font-family:var(--f-stamp);color:var(--paper);background:var(--ink);width:54px;height:54px;display:grid;place-items:center;font-size:1.8rem;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
-.step:nth-child(2)::before{background:var(--sun);color:var(--ink-dark)}
+.step-star{position:absolute;top:-4px;left:-4px;width:62px;height:62px;pointer-events:none}
+.step-star svg{width:100%;height:100%;overflow:visible}
+.step:nth-child(1) .step-star{transform:rotate(-8deg)}
+.step:nth-child(3) .step-star{transform:rotate(10deg)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;z-index:1;top:-4px;left:-4px;width:62px;height:62px;padding-top:8px;display:grid;place-items:center;font-family:var(--f-marker);font-size:1.6rem;line-height:1;color:var(--paper);-webkit-text-stroke:5px var(--ink-dark);paint-order:stroke fill}
+.step:nth-child(2)::before{color:var(--ink-dark);-webkit-text-stroke:5px var(--paper)}
 .step h3{font-family:var(--f-marker);color:var(--ink);font-size:1.35rem}
 .step p{margin-top:8px}
 
@@ -196,6 +200,17 @@ footer strong{color:#fff}
       <line x1="0" y1="0" x2="0" y2="3.2" stroke="#f5cf3a" stroke-width="2.1"/>
     </pattern>
     <path id="star-shape" d="M25 4.5C26.4 10 28.6 14.6 30.6 18.2 35.5 18 41 18.3 46 18.9 41.8 22.6 37.6 26 33.9 29.2 35.6 34.4 37.6 40 39.2 45.2 34.6 41.9 29.8 38.6 25.1 35.9 20 39.4 15.3 42.9 10.6 46 12.3 40.6 14.2 35 16.2 29.4 12 26.2 7.6 22.9 3.6 19.6 9 18.9 14.2 18.2 19.4 17.8 21.4 13.2 23.2 8.6 25 4.5Z"/>
+    <pattern id="hatch-blue" width="3.2" height="3.2" patternUnits="userSpaceOnUse" patternTransform="rotate(-38)">
+      <line x1="0" y1="0" x2="0" y2="3.2" stroke="#2b55a6" stroke-width="2.1"/>
+    </pattern>
+    <symbol id="crayon-star-blue" viewBox="0 0 50 50" overflow="visible">
+      <g filter="url(#crayon)">
+        <use href="#star-shape" fill="#6f8cc9"/>
+        <use href="#star-shape" fill="url(#hatch-blue)"/>
+        <use href="#star-shape" fill="none" stroke="#1d3c7c" stroke-width="1.7" stroke-linejoin="round"/>
+        <use href="#star-shape" fill="none" stroke="#2b55a6" stroke-width="1.1" stroke-linejoin="round" transform="translate(0.9 -0.7) rotate(1.5 25 25)"/>
+      </g>
+    </symbol>
     <symbol id="crayon-star" viewBox="0 0 50 50" overflow="visible">
       <g filter="url(#crayon)">
         <use href="#star-shape" fill="#fbe58a"/>
@@ -338,9 +353,9 @@ footer strong{color:#fff}
       </div>
     </div>
     <div class="steps">
-      <div class="step"><h3>Kies je workshop</h3><p>Bekijk de koffiekaart en kies de techniek die je wil leren. Alles is beginnersvriendelijk.</p></div>
-      <div class="step"><h3>Schuif aan in de koffiebar</h3><p>Wij brengen al het materiaal mee. Jij bestelt je koffie en zoekt een plekje aan tafel.</p></div>
-      <div class="step"><h3>Maak, praat, neem mee</h3><p>Twee uur creëren zonder scherm, met mensen die hetzelfde zoeken. Je werk gaat mee naar huis.</p></div>
+      <div class="step"><span class="step-star" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star-blue"/></svg></span><h3>Kies je workshop</h3><p>Bekijk de koffiekaart en kies de techniek die je wil leren. Alles is beginnersvriendelijk.</p></div>
+      <div class="step"><span class="step-star" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star"/></svg></span><h3>Schuif aan in de koffiebar</h3><p>Wij brengen al het materiaal mee. Jij bestelt je koffie en zoekt een plekje aan tafel.</p></div>
+      <div class="step"><span class="step-star" aria-hidden="true"><svg viewBox="0 0 50 50"><use href="#crayon-star-blue"/></svg></span><h3>Maak, praat, neem mee</h3><p>Twee uur creëren zonder scherm, met mensen die hetzelfde zoeken. Je werk gaat mee naar huis.</p></div>
     </div>
   </div>
 </section>
