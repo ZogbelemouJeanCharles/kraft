@@ -132,6 +132,33 @@ a{color:inherit}
 .step p{margin-top:8px}
 
 
+/* ---------- team (staggered rows, each person cut out on a crayon star) ---------- */
+.team{background:var(--lilac);padding-block:64px 80px;position:relative;overflow:hidden}
+.team .sec-head h2 sup{font-family:var(--f-stamp);font-size:.4em;vertical-align:super;color:var(--ink-dark);margin-left:.15em}
+.team-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:clamp(20px,3vw,40px);row-gap:28px}
+.team-grid > li:nth-child(6n+1){grid-column:1 / span 2}
+.team-grid > li:nth-child(6n+2){grid-column:3 / span 2}
+.team-grid > li:nth-child(6n+3){grid-column:5 / span 2}
+.team-grid > li:nth-child(6n+4){grid-column:2 / span 2}
+.team-grid > li:nth-child(6n+5){grid-column:4 / span 2}
+.team-grid > li:nth-child(6n+6){grid-column:6 / span 2}
+.member{display:flex;flex-direction:column;align-items:center;text-align:center;outline:none}
+.member-visual{position:relative;width:100%;aspect-ratio:1 / 1.05;max-width:100%;margin-bottom:6%}
+.member-star{position:absolute;left:-8%;bottom:-6%;width:116%;height:auto;aspect-ratio:1;overflow:visible;transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.member:nth-child(odd) .member-star{transform:rotate(-6deg)}
+.member:nth-child(even) .member-star{transform:rotate(7deg)}
+.member-photo{position:absolute;left:50%;bottom:4%;height:90%;width:auto;max-width:104%;object-fit:contain;object-position:50% 100%;transform:translateX(-50%);transition:transform .45s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
+.member-name{margin-top:10px;font-family:var(--f-body);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);font-weight:400}
+.member-name strong{font-weight:700}
+.member-role{font-family:var(--f-marker);color:var(--ink-dark);font-size:.95rem;margin-top:2px}
+.member:focus-visible .member-visual{outline:3px dashed var(--ink);outline-offset:4px}
+.member.is-on .member-photo,.member:focus-visible .member-photo{transform:translateX(-50%) translateY(-4%) scale(1.04)}
+.member.is-on .member-star,.member:focus-visible .member-star{transform:rotate(22deg) scale(1.08)}
+@media (hover:hover){
+  .member:hover .member-photo{transform:translateX(-50%) translateY(-4%) scale(1.04)}
+  .member:hover .member-star{transform:rotate(22deg) scale(1.08)}
+}
+
 footer{background:var(--ink-dark);color:var(--lilac);padding-block:30px;font-size:.92rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer strong{color:#fff}
@@ -169,7 +196,10 @@ footer strong{color:#fff}
   .stamp-btn{width:58px;height:58px}
   .ink-btn{width:44px;height:44px}
   footer .wrap{flex-direction:column}
-}
+  .team{padding-block:48px 56px}
+  .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+  .team-grid > li:nth-child(n){grid-column:auto}
+  }
 
 /* ---------- small phone ---------- */
 @media (max-width:420px){
@@ -360,6 +390,69 @@ footer strong{color:#fff}
   </div>
 </section>
 
+<section class="team" id="team">
+  <svg class="dots" style="top:18px" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 220 100, 420 10, 620 50 S 860 110, 1000 60"/></svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">de mensen achter de koffietafel</span>
+        <h2>Ons fantastische team<sup>6</sup></h2>
+      </div>
+      <p>Zes studenten die liever samen iets maken dan scrollen. Beweeg over een ster en zeg hallo.</p>
+    </div>
+    <ul class="team-grid">
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star"/></svg>
+          <img class="member-photo" src="img/team/fien.webp" alt="Foto van Fien" width="800" height="853" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Fien</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star-blue"/></svg>
+          <img class="member-photo" src="img/team/jean-charles.webp" alt="Foto van Jean-Charles" width="458" height="900" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Jean-Charles</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star"/></svg>
+          <img class="member-photo" src="img/team/soniya.webp" alt="Foto van Soniya" width="630" height="713" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Soniya</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star-blue"/></svg>
+          <img class="member-photo" src="img/team/kiara.webp" alt="Foto van Kiara" width="800" height="721" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Kiara</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star"/></svg>
+          <img class="member-photo" src="img/team/elif.webp" alt="Foto van Elif" width="800" height="786" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Elif</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+      <li class="member" tabindex="0">
+        <div class="member-visual">
+          <svg class="member-star" viewBox="0 0 50 50" aria-hidden="true"><use href="#crayon-star-blue"/></svg>
+          <img class="member-photo" src="img/team/marit.webp" alt="Foto van Marit" width="605" height="871" loading="lazy">
+        </div>
+        <h3 class="member-name"><strong>Marit</strong></h3>
+        <p class="member-role">rol volgt</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span><strong>KRAFT</strong> · creatieve workshops in koffiebars</span>
@@ -470,6 +563,11 @@ footer strong{color:#fff}
 
   size(); seed();
   let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(size, 150); });
+  // team: tap a member on touch screens for the same bounce as hover
+  document.querySelectorAll('.member').forEach(m => {
+    m.addEventListener('click', () => m.classList.toggle('is-on'));
+    m.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); m.classList.toggle('is-on'); } });
+  });
 })();
 </script>
 </body>
