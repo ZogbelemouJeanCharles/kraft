@@ -163,8 +163,9 @@ a{color:inherit}
 .member.is-blue .member-name.spray::after{background-image:var(--specks-white);opacity:.75}
 .member-role{margin-top:18px;font-weight:800;font-size:1.12rem;color:var(--ink-deep)}
 .member-bio{margin-top:4px;font-size:1.08rem;font-weight:500;color:var(--ink-deep);max-width:28ch;margin-inline:auto;line-height:1.35}
-.member-photo{position:relative;justify-self:center;width:100%;max-width:330px}
-.member-photo img{display:block;width:100%;height:auto;transform:rotate(var(--r,0deg));transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+/* photos share one maximum height, so a tall narrow photo is not blown up next to a wide one */
+.member-photo{position:relative;justify-self:center;display:flex;justify-content:center;width:100%;max-width:330px}
+.member-photo img{display:block;width:auto;max-width:100%;height:auto;max-height:clamp(280px,30vw,400px);transform:rotate(var(--r,0deg));transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
 .member .scribble{z-index:2}
 @media (hover:hover){.member:hover .member-photo img{transform:rotate(calc(var(--r,0deg) * -1)) scale(1.04)}}
 
